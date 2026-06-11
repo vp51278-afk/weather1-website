@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Weather App</title>
+
+<link rel="stylesheet" href="style.css">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:#021b4d;
+    font-family:sans-serif;
+    overflow-x:hidden;
+}
+
+.main{
+    position:relative;
+    width:100%;
+    min-height:100vh;
+}
+
+.img{
+    width:100%;
+    height:100vh;
+    object-fit:cover;
+}
+
+.menu-icon{
+    width:35px;
+    cursor:pointer;
+    position:absolute;
+    top:15px;
+    left:15px;
+    z-index:10;
+}
+
+.menu-icon span{
+    display:block;
+    height:4px;
+    background:white;
+    margin:6px 0;
+    border-radius:5px;
+}
+
+.head1{
+    position:absolute;
+    top:10px;
+    left:60px;
+    color:orange;
+    font-style:italic;
+    font-weight:bold;
+    z-index:10;
+}
+
+.head2{
+    color:white;
+}
+
+.head{
+    position:absolute;
+    top:140px;
+    left:30px;
+    color:white;
+    font-style:italic;
+    font-weight:bold;
+    width:400px;
+    z-index:10;
+}
+
+.img1{
+    position:absolute;
+    top:250px;
+    left:20px;
+    width:250px;
+    height:250px;
+}
+.container{
+    position:absolute;
+    top:70px;
+    left:20px;
+    display:flex;
+    gap:10px;
+    z-index:10;
+}
+
+input{
+    padding:14px;
+    width:260px;
+    border:none;
+    border-radius:10px;
+    outline:none;
+    font-size:16px;
+}
+
+button{
+    padding:14px 20px;
+    border:none;
+    background:orange;
+    font-style: italic;
+    border-radius:10px;
+    cursor:pointer;
+   font-size: 15px;
+}
+
+#weatherBox{
+    position:absolute;
+    top:100px;
+    right:200px;
+    color:white;
+    font-style:italic;
+    font-size:22px;
+    text-align:center;
+    z-index:10;
+}
+
+#detailsCard{
+    position:absolute;
+    top:220px;
+    right:100px;
+    width:300px;
+    padding:20px;
+    border-radius:20px;
+    background:rgba(255,255,255,0.1);
+    backdrop-filter:blur(12px);
+    color:white;
+    z-index:10;
+}
+
+#detailsCard h2{
+    text-align:center;
+    margin-bottom:15px;
+    font-size:22px;
+    font-style:italic;
+}
+
+#detailsCard p{
+    font-size:18px;
+    font-style:italic;
+    margin:10px 0;
+}
+
+#forecast{
+    position:absolute;
+    bottom:20px;
+    left:50%;
+    transform:translateX(-50%);
+
+    display:flex;
+    gap:15px;
+    flex-wrap:wrap;
+    justify-content:center;
+
+    width:90%;
+    z-index:10;
+}
+
+.forecast-card{
+    background:rgba(255,255,255,0.1);
+    backdrop-filter:blur(10px);
+
+    border-radius:20px;
+    padding:15px;
+    width:110px;
+
+    color:white;
+    text-align:center;
+
+    transition:0.3s;
+}
+
+.forecast-card:hover{
+    transform:translateY(-8px);
+}
+
+
+@media(max-width:768px){
+
+.main{
+    min-height:1200px;
+}
+
+.img{
+    height:1200px;
+}
+
+.head1{
+    font-size:20px;
+    left:55px;
+    top:15px;
+}
+
+.head{
+    top:130px;
+    left:20px;
+    width:90%;
+    font-size:22px;
+    line-height:1.4;
+}
+
+.container{
+    top:70px;
+    left:15px;
+    width:92%;
+    display:flex;
+    gap:8px;
+}
+
+input{
+    width:72%;
+    padding:12px;
+    font-size:14px;
+}
+
+button{
+    width:28%;
+    padding:12px 5px;
+    font-size:14px;
+}
+
+.img1{
+    width:120px;
+    height:120px;
+    top:250px;
+    left:15px;
+}
+
+#weatherBox{
+    top:200px;
+    right:15px;
+    font-size:16px;
+}
+
+#detailsCard{
+    top:370px;
+    left:15px;
+    right:15px;
+    width:auto;
+    padding:15px;
+}
+
+#detailsCard h2{
+    font-size:18px;
+}
+
+#detailsCard p{
+    font-size:14px;
+}
+
+#forecast{
+    position:absolute;
+    top:700px;
+
+    left:50%;
+    transform:translateX(-50%);
+
+    width:95%;
+
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+
+    gap:10px;
+}
+
+.forecast-card{
+    width:85px;
+    padding:10px;
+    font-size:12px;
+}
+}
+</style>
+</head>
+
+<body>
+
+<div class="main">
+
+    <img class="img"
+    src="bg of weather.png"
+    alt="weather">
+
+    <div class="menu-icon">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <h1 class="head1">
+        VAJP
+        <span class="head2">
+            Weather-App
+        </span>
+    </h1>
+
+    <h1 class="head">
+        Check The Weather-
+        <br>
+        Plan Your Day.
+    </h1>
+    <div class="container">
+
+        <input
+        type="text"
+        id="city"
+        placeholder="Enter city name">
+
+        <button onclick="getWeather()">
+            Search
+        </button>
+
+    </div>
+
+    <div id="weatherBox"></div>
+
+    <div id="detailsCard"></div>
+
+    <div id="forecast"></div>
+
+    <img class="img1"
+    src="clouds.png"
+    alt="clouds">
+
+</div>
+
+<script src="index.js"></script>
+
+</body>
+</html>
